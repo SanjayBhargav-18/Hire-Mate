@@ -117,16 +117,14 @@ npm run dev
 
 ## Screenshots
 
-Add product screenshots in `frontend/public/` and reference them below.
+### 1) Landing / Hero
+![Landing](frontend/public/hero.png)
 
-### 1) Home / Landing Page
-![Home](frontend/public/screenshot-for-readme.png)
+### 2) Live Interview Session (Editor + Video + Chat)
+![Live Session](frontend/public/screenshot-for-readme.png)
 
-### 2) Dashboard
-![Dashboard](frontend/public/screenshot-for-readme.png)
-
-### 3) Live Session / Coding Room
-![Session](frontend/public/screenshot-for-readme.png)
+> Note: Right now, the repository contains these two real UI images in `frontend/public`.
+> Add more screenshots (for Dashboard, Problems, Session History) in the same folder and reference them here.
 
 ## Deployment Notes
 
