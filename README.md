@@ -1,103 +1,139 @@
-<!-- Project README: professional, concise, and interviewer-focused -->
-# Hire-Mate — Full‑Stack Live Coding & Interview Platform
 
-![Demo App](frontend/public/screenshot-for-readme.png)
+# Hire-Mate — Real-time Coding & Interview Platform
 
-Brief: Hire‑Mate is a full‑stack interview platform that provides real‑time paired coding interviews with video, voice, chat, secure code execution, and automated test feedback. It combines a React + Vite frontend with a Node.js + Express backend, real‑time media and messaging, and isolated code execution for safe evaluation.
+Hire-Mate is a full-stack interview platform designed for technical interviews and collaborative coding rounds. It combines live coding, real-time video interaction, chat, and automated code execution feedback in one workflow.
 
-Table of contents
-- Features
-- Architecture & Tech Stack
-- Notable Implementations
-- Local Setup (quick)
-- Environment Variables
-- Running Locally
-- Testing & Development notes
-- Deployment
-- Contributing & Contact
+![Project Screenshot](frontend/public/screenshot-for-readme.png)
 
-Features
-- Real‑time collaborative code editor with execution and test validation
+## Features
+
+- Real-time coding environment for interviewer and candidate
 - 1:1 video interview rooms with mic/camera controls and screen sharing
-- Chat and in‑session messaging
-- Practice problems and session history (dashboard + stats)
-- Secure, isolated code execution for multiple languages
-- Background job processing (Inngest) for async tasks
-- Authentication (Clerk) and role/room access controls
+- In-session chat for communication during interviews
+- Secure code execution with automated pass/fail test feedback
+- Practice problems page for individual preparation
+- Session history and dashboard analytics
+- Authentication and access-controlled interview rooms
+- Background job handling for asynchronous workflows
 
-Architecture & Tech Stack
-- Frontend: React, Vite, TanStack Query; components under frontend/src
-- Backend: Node.js, Express; API and business logic under backend/src
-- Database: MongoDB (connection in backend/lib/db.js)
-- Real‑time & Media: Stream (or similar) for video/chat; WebRTC integrations
-- Background jobs: Inngest for async processing
-- Dev tooling: ESLint, Prettier, Vite dev server
+## Tech Stack
 
-Notable implementations
-- Secure code execution: sandboxed runner invoked by backend with strict time/memory limits and per‑run isolation.
-- Automated test feedback: each problem has a test harness — runs are evaluated and results are returned to the UI with pass/fail details.
-- Room locking & access: interview rooms permit only intended participants; session state persisted in `Session` model.
+### Frontend
+- React
+- Vite
+- TanStack Query
+- Axios
 
-Local setup (quick)
-Prerequisites
-- Node.js (>=16) and npm
-- MongoDB connection (local or hosted)
+### Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
 
-Environment variables
-- Copy the example env values into the appropriate `.env` files for each service.
-- Backend: create `.env` in the [backend](backend) folder.
-- Frontend: create `.env` in the [frontend](frontend) folder.
+### Integrations / Services
+- Clerk (authentication)
+- Stream (real-time video/chat)
+- Inngest (background jobs)
+- Piston / isolated runtime for code execution
 
-Example variables (summary)
-- Backend (`backend/.env`)
-	- `PORT` (e.g. 3000)
-	- `NODE_ENV` (development)
-	- `DB_URL` (MongoDB connection URI)
-	- `INNGEST_EVENT_KEY`, `INNGEST_SIGNING_KEY` (background jobs)
-	- `STREAM_API_KEY`, `STREAM_API_SECRET` (media)
-	- `CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY` (auth)
-	- `CLIENT_URL` (frontend origin)
-- Frontend (`frontend/.env`)
-	- `VITE_CLERK_PUBLISHABLE_KEY`
-	- `VITE_API_URL` (e.g. http://localhost:3000/api)
-	- `VITE_STREAM_API_KEY`
+## Project Structure
 
-Running locally
-1) Backend
+```text
+Hire-Mate/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── models/
+│   │   └── lib/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── hooks/
+│   │   └── api/
+└── README.md
+```
+
+## Setup Instructions
+
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- npm
+- MongoDB connection string (local or cloud)
+
+### 1) Clone Repository
+
+```bash
+git clone https://github.com/SanjayBhargav-18/Hire-Mate.git
+cd Hire-Mate
+```
+
+### 2) Configure Environment Variables
+
+Create `.env` in `backend/`:
+
+```bash
+PORT=3000
+NODE_ENV=development
+
+DB_URL=your_mongodb_connection_url
+
+INNGEST_EVENT_KEY=your_inngest_event_key
+INNGEST_SIGNING_KEY=your_inngest_signing_key
+
+STREAM_API_KEY=your_stream_api_key
+STREAM_API_SECRET=your_stream_api_secret
+
+CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+
+CLIENT_URL=http://localhost:5173
+```
+
+Create `.env` in `frontend/`:
+
+```bash
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+VITE_API_URL=http://localhost:3000/api
+VITE_STREAM_API_KEY=your_stream_api_key
+```
+
+### 3) Install & Run Backend
+
 ```bash
 cd backend
 npm install
 npm run dev
 ```
 
-2) Frontend
+### 4) Install & Run Frontend
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Notes
-- Backend runs on `PORT` (default 3000) and exposes API under `/api`.
-- Frontend Vite dev server typically runs on port 5173 and proxies API calls to the backend during development.
+## Screenshots
 
-Testing & development notes
-- Look for models under `backend/src/models` (e.g., `Session.js`, `User.js`).
-- API routes live under `backend/src/routes` and controllers under `backend/src/controllers`.
-- Useful dev entrypoints: `npm run dev` in each folder (frontend/backend).
+Add product screenshots in `frontend/public/` and reference them below.
 
-Deployment
-- App is designed to be deployed as two units: frontend static build (Vite) and backend Node service. Background workers for Inngest should be deployed where they can securely access the backend and event keys.
+### 1) Home / Landing Page
+![Home](frontend/public/screenshot-for-readme.png)
 
-Security & privacy
-- Code execution is sandboxed on the server and should be deployed behind strict resource limits. Do not run untrusted runners on shared hosts without additional isolation.
+### 2) Dashboard
+![Dashboard](frontend/public/screenshot-for-readme.png)
 
-Contributing
-- Read `CONTRIBUTING.md` (if present) and follow GitHub PR workflow. Create branches per feature and open PRs for review.
+### 3) Live Session / Coding Room
+![Session](frontend/public/screenshot-for-readme.png)
 
-Contact
-- Author / Maintainer: see repository commit history for contact information, or open an issue/PR for questions.
+## Deployment Notes
 
-Short demo and screenshots are under `frontend/public`.
+- Frontend can be deployed as a Vite static build.
+- Backend runs as a Node.js service.
+- Keep all API keys and secrets in environment variables.
 
-If you'd like, I can: add a usage GIF, expand the API documentation, or generate a short one‑page bullet summary tailored for a résumé. Which would you prefer next?
+## Author
+
+Sanjay Bhargav
