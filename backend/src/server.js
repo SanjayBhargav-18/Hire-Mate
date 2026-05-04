@@ -1,3 +1,4 @@
+import userRoutes from "./routes/user.route.js";
 import express from "express";
 import path from "path";
 import cors from "cors";
@@ -16,10 +17,17 @@ const app = express();
 const __dirname = path.resolve();
 
 // middleware
+// enable JSON parsing
 app.use(express.json());
-// credentials:true meaning?? => server allows a browser to include cookies on request
+
+// allow requests from the frontend and allow cookies to be sent
 app.use(cors({ origin: ENV.CLIENT_URL, credentials: true }));
+
+// attach Clerk auth helpers to requests (required by protectRoute/requireAuth)
 app.use(clerkMiddleware()); // this adds auth field to request object: req.auth()
+
+// user routes (public sync endpoint)
+app.use("/api/user", userRoutes);
 
 app.use("/api/inngest", serve({ client: inngest, functions }));
 app.use("/api/chat", chatRoutes);

@@ -7,11 +7,32 @@ import DashboardPage from "./pages/DashboardPage";
 import ProblemPage from "./pages/ProblemPage";
 import ProblemsPage from "./pages/ProblemsPage";
 import SessionPage from "./pages/SessionPage";
+import { useEffect } from "react";
 
 function App() {
-  const { isSignedIn, isLoaded } = useUser();
+  const { isSignedIn, isLoaded, user } = useUser();
 
-  // this will get rid of the flickering effect
+  // 🔥 AUTO SYNC USER TO BACKEND
+  useEffect(() => {
+    if (user) {
+      fetch("http://localhost:3000/api/user/sync", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clerkId: user.id,
+          email: user.primaryEmailAddress?.emailAddress,
+          name: user.fullName || "User",
+        }),
+      })
+        .then(res => res.json())
+        .then(data => console.log("User synced:", data))
+        .catch(err => console.error("Sync error:", err));
+    }
+  }, [user]);
+
+  // prevent flicker
   if (!isLoaded) return null;
 
   return (
