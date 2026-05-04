@@ -3,8 +3,6 @@
 
 Hire-Mate is a full-stack interview platform designed for technical interviews and collaborative coding rounds. It combines live coding, real-time video interaction, chat, and automated code execution feedback in one workflow.
 
-![Project Screenshot](frontend/public/screenshots/1-home-page.png)
-
 ## Features
 
 - Real-time coding environment for interviewer and candidate
@@ -115,28 +113,13 @@ npm install
 npm run dev
 ```
 
-## Screenshots
+## Workflow and Screens of Project
 
-### 1) Home Page
-![Home Page](frontend/public/screenshots/1-home-page.png)
+The complete project workflow, feature mapping, and screen flow are documented in Eraser for a cleaner, structured overview of the product experience.
 
-### 2) Authentication Page
-![Authentication Page](frontend/public/screenshots/2-authentication-page.png)
+View the interactive workflow and screens here: [Eraser Workspace](https://app.eraser.io/workspace/tz33jxYdQppT0qVk6AIv)
 
-### 3) Dashboard
-![Dashboard](frontend/public/screenshots/3-dashboard.png)
-
-### 4) Problems Page
-![Problems Page](frontend/public/screenshots/4-problems-page.png)
-
-### 5) Problems Practice Page
-![Problems Practice Page](frontend/public/screenshots/5-problems-practice-page.png)
-
-### 6) 1-to-1 Interaction Page
-![1-to-1 Interaction Page](frontend/public/screenshots/6-one-to-one-interaction-page.png)
-
-### 7) 1-to-1 Interaction with Real-time Chat
-![1-to-1 Interaction with Real-time Chat](frontend/public/screenshots/7-one-to-one-interaction-chat-page.png)
+This diagram workspace covers the end-to-end product flow, including authentication, dashboard navigation, practice problems, and 1-to-1 collaboration sessions.
 
 ## Deployment Notes
 
