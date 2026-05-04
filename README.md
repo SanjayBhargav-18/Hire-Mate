@@ -3,7 +3,7 @@
 
 Hire-Mate is a full-stack interview platform designed for technical interviews and collaborative coding rounds. It combines live coding, real-time video interaction, chat, and automated code execution feedback in one workflow.
 
-![Project Screenshot](frontend/public/screenshot-for-readme.png)
+![Project Screenshot](frontend/public/screenshots/1-home-page.png)
 
 ## Features
 
@@ -117,14 +117,26 @@ npm run dev
 
 ## Screenshots
 
-### 1) Landing / Hero
-![Landing](frontend/public/hero.png)
+### 1) Home Page
+![Home Page](frontend/public/screenshots/1-home-page.png)
 
-### 2) Live Interview Session (Editor + Video + Chat)
-![Live Session](frontend/public/screenshot-for-readme.png)
+### 2) Authentication Page
+![Authentication Page](frontend/public/screenshots/2-authentication-page.png)
 
-> Note: Right now, the repository contains these two real UI images in `frontend/public`.
-> Add more screenshots (for Dashboard, Problems, Session History) in the same folder and reference them here.
+### 3) Dashboard
+![Dashboard](frontend/public/screenshots/3-dashboard.png)
+
+### 4) Problems Page
+![Problems Page](frontend/public/screenshots/4-problems-page.png)
+
+### 5) Problems Practice Page
+![Problems Practice Page](frontend/public/screenshots/5-problems-practice-page.png)
+
+### 6) 1-to-1 Interaction Page
+![1-to-1 Interaction Page](frontend/public/screenshots/6-one-to-one-interaction-page.png)
+
+### 7) 1-to-1 Interaction with Real-time Chat
+![1-to-1 Interaction with Real-time Chat](frontend/public/screenshots/7-one-to-one-interaction-chat-page.png)
 
 ## Deployment Notes
 

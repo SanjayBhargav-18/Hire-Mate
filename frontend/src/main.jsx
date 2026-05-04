@@ -6,6 +6,19 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const clerkLocalization = {
+  locale: "en-US",
+  signIn: {
+    start: {
+      title: "Sign in to Hire-Mate",
+      titleCombined: "Sign in to Hire-Mate",
+    },
+    password: {
+      title: "Sign in to Hire-Mate",
+    },
+  },
+};
+
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -19,7 +32,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY} localization={clerkLocalization}>
           <App />
         </ClerkProvider>
       </QueryClientProvider>
